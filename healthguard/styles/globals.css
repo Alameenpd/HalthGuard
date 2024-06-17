@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html {
+  font-family: Urbanist, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: white;
+}
+
+.ql-tooltip {
+  position: absolute !important;
+  transform: translateX(0%) !important;
+  left: 0px !important;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-gray-900 bg-white;
+  }
+}

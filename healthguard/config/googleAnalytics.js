@@ -1,0 +1,3 @@
+const GOOGLE_ANALYTICS_CODE = "";
+
+export default GOOGLE_ANALYTICS_CODE;

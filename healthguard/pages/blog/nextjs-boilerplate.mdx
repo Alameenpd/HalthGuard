@@ -1,0 +1,412 @@
+---
+title: NextJs SaaS Boilerplate
+---
+
+# How to use NextJs SaaS Boilerplate
+
+## Initial Setup
+
+When you get the boilerplate code from BoilerCode.co, You need to update your own credentials in `env` file.
+
+- Open `.env.example` file, In this file you will find all the variables that you need.
+- Create a new file `.env.local`, Copy all the variable from `.env.example` to `.env.local` and update your own credentials.
+- We have added the documentation links to each env variable on how you can get those.
+
+- Run `npm install`, this will install all the required dependencies.
+- Run `npm run dev`, this will start the server on localhost
+
+## User Auth
+
+In this NextJs SaaS boilerplate, we are using NextAuth for handling the user authentication. NextAuth is an Open Source Auth Framework which support Login with Email, Social Login and Login with Magic Link in very easy steps.
+
+**Guide in Boilerplate**
+
+- In our dependency file `package.json` we have
+
+```
+"next-auth": "^4.23.1",
+```
+
+- Go to `/pages/api/auth/[...nextauth].js` file, This is the most important file for NextAuth. It handles the authentication options also this is required for `signin`, `signout` features.
+
+```js
+providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
+```
+
+In above code, you can update the authentication methods.
+
+```js
+adapter: PrismaAdapter(prisma),
+```
+
+In the same file, we have `PrismaAdapter` which is getting used to store user information in our database.
+
+```js
+theme: {
+    colorScheme: "auto",
+    brandColor: "#FFFFFF",
+    logo: "http://localhost:3000/favicon.ico",
+    buttonText: "#000000",
+  },
+```
+
+And you also have options to change themes in your authentication pages.
+
+## Langchain, Pinecone & OpenAI Integration
+
+In NextJs SaaS boilerplate, you get Langchain, Pinecone and OpenAI integration out of the box.
+
+- Change in `.env` file
+
+```js
+OPENAI_API_KEY = YOUR_VALUE;
+
+PINECONE_API_KEY = YOUR_VALUE;
+PINECONE_ENVIRONMENT = YOUR_VALUE;
+PINECONE_INDEX_NAME = YOUR_VALUE;
+```
+
+You need to update above values to your own API Keys
+
+- Go to `/pages/dashboard.js`, You will find the AI components already there.
+
+```js
+export default function Dashboard() {
+  return (
+    <>
+      <LandingLayout>
+        <SEO />
+        <LandingHeader />
+        <main className="space-y-40 mb-0">
+          <DashboardHero />
+          <FeedDataCard />
+          <Chatbot />
+        </main>
+      </LandingLayout>
+    </>
+  );
+}
+```
+
+In above page, we have our AI components `<FeedDataCard />` and `<Chatbot />`
+
+- Go to `/components/aiComponent/` dir and you will find `FeedDataCard` and `Chatbot` components.
+- `FeedDataCard` already integrated with Langchain and Pinecone to upload PDF and store as vector db in Pinecone.
+- `FeedDataCard` also create entry into your postgres data (we are using Prisma for that. see Database integration section).
+- `ChatBot` also integrated with Langchain, Pinecone and OpenAI, which you can use to create Chatbot with your PDF documents without any changes.
+
+## Email Integration
+
+We are using `Mailgun` SMTP Server for sending emails. You can use any SMTP server you want for sending emails. You only need to update `SMTP` configs in `.env` file.
+
+**Guide in Boilerplate**
+
+- In `.env.local` file, update your SMTP configurations.
+- In `/pages/api/auth/[...nextauth].js` file, We are using those STMP configs for sending User Auth emails.
+- In `/lib/mailService.js`, You will find boilerplate code for sending custom HTML supported emails.
+
+```js
+async sendMail(mailOptions) {
+  //you will find code in boilerplate codebase
+}
+
+async sendWelcomeEmail(to, name) {
+  //you will find code in boilerplate codebase
+}
+```
+
+## Database Integration
+
+For Database, We are using `Prisma` and `Postgres`. But the best things with `Prisma` is you can switch to any other database without needing to change anything else.
+
+**Guide in Boilerplate**
+
+- `/prisma` dir has a file `schema.prisma` where you can add your database tables.
+- In the same file `schema.prisma`, You just need to modify below code to change the database
+
+```js
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+## Landing Page
+
+Every BoilerCode boilerplate comes with awesome landing page templates. Which includes all the essential components to help you launch faster.
+
+**Guide in Boilerplate**
+
+- Go to `/components/landingPage` and you will find following components
+
+```js
+<LandingLayout>
+  <LandingHeader />
+  <main className="space-y-40 mb-0">
+    <LandingHero />
+    <LandingFeature />
+    <LandingHowTo />
+    <LandingPricing />
+    <LandingTastimonials />
+    <LandingCta />
+  </main>
+  <LandingFooter />
+</LandingLayout>
+```
+
+All these components comes out of the box with BoilerCode boilerplates.
+
+## Dynamic Payment Integration
+
+In our NextJs SaaS boilerplate code, we have made super simple to add Stripe or LemonSqueezy payments directly in the pricing page.
+
+**Guide in Boilerplate**
+
+- Go to `/config/pricing.js`, here you can update any pricing you want.
+
+For LemonSqueezy Payment Plan
+
+```js
+{
+    title: "LemonSqueezy Payment",
+    price: "$9",
+    features: [
+      "Our Awesome Feature 1",
+      "Our Awesome Feature 2",
+      "Our Awesome Feature 3",
+    ],
+    paymentProvider: "LemonSqueezy",
+    lemonSqueezy: {
+      buyLink: "YOUR_LEMONSQUEEZY_PAYMENT_LINK",
+    },
+    stripe: {},
+  },
+```
+
+For Stripe Payment Plan
+
+```js
+{
+    title: "Stripe Payment",
+    price: "$19",
+    features: [
+      "Our Awesome Feature 1",
+      "Our Awesome Feature 2",
+      "Our Awesome Feature 3",
+    ],
+    paymentProvider: "Stripe",
+    lemonSqueezy: {},
+    stripe: {
+      lineItems: [
+        {
+          price: "PRODUCT_ID",
+          quantity: 1,
+        },
+      ],
+    },
+  },
+```
+
+## Checkout - Stripe
+
+NextJs SaaS boilerplate comes with Stripe checkout library code so you can integrate with Stripe super fast.
+
+**Guide in Boilerplate**
+
+- Go to `lib/stripe-checkout.js`, it has all the required code to create a stripe checkout without needing to change any code.
+
+```js
+export async function stripeCheckout({ lineItems }) {
+  //you will find code in boilerplate codebase
+}
+```
+
+## Checkout - LemonSqueezy
+
+NextJs SaaS Boilerplate code has extensive LemonSqueezy Integrations. It includes `Creating Checkouts`, `Creating Subscriptions`, `License Key` operations.
+
+**Guide in Boilerplate**
+
+- Go to `lib/lemonSqueezy.js`, You will find all the required method here.
+
+```js
+const LicenseKeyOps = {
+  validateLicenseKey: async (licenseKey) => {
+    //you will find code in boilerplate codebase
+  },
+
+  activeLicenseKey: async (licenseKey) => {
+    //you will find code in boilerplate codebase
+  };
+}
+
+const SubscriptionOps = {
+  createCheckout: async (userEmail, storeId, productId) => {
+    //you will find code in boilerplate codebase
+  },
+
+  checkSubscription: async (userEmail, storeId, variantId, subcriptionId) => {
+    //you will find code in boilerplate codebase
+  },
+};
+```
+
+## Webhook - Stripe
+
+Boilerplate comes with Stripe Webhook receiver API, so you can just plug your webhook into stripe easily
+
+**Guide in Boilerplate**
+
+- Go to `/pages/api/payments/stripe_webhook.js`
+
+```js
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    const sig = req.headers["stripe-signature"];
+
+    //you will find rest of the code in boilerplate codebase
+  }
+}
+```
+
+## Webhook - LemonSqueezy
+
+Boilerplate comes with LemonSqueezy Webhook receiver API, so you can just plug your webhook into LemonSqueezy easily
+
+**Guide in Boilerplate**
+
+- Go to `/pages/api/payments/lemon-squeezy-webhook.js`
+
+```js
+export async function POST(request) {
+  //you will find rest of the code in boilerplate codebase
+
+  switch (payload.meta.event_name) {
+    case "subscription_created": {
+      //you will find rest of the code in boilerplate codebase
+
+      const subscriptionId = subscription.data.id;
+      const customerId = payload.data.attributes.customer_id;
+      const userEmail = payload.data.attributes.user_email;
+      const variantId = subscription.data.attributes.variant_id;
+      const currentPeriodEnd = subscription.data.attributes.renews_at;
+
+      //update values in your db
+    }
+
+    case "subscription_updated": {
+      //you will find rest of the code in boilerplate codebase
+
+      const subscriptionId = subscription.data.id;
+      const customerId = payload.data.attributes.customer_id;
+      const userEmail = payload.data.attributes.user_email;
+      const variantId = subscription.data.attributes.variant_id;
+      const currentPeriodEnd = subscription.data.attributes.renews_at;
+      //update values in your db
+    }
+
+    default: {
+      return;
+    }
+  }
+}
+```
+
+## Customer Support
+
+NextJs SaaS boilerplate has integration with `Crisp` to help you add customer support on your platform.
+
+**Guide in Boilerplate**
+
+- Go to `config/crispSupport.js` and just update the following configuration.
+
+```js
+const CRISP_WEBSITE_ID = "";
+```
+
+## Google Analytics
+
+NextJs SaaS boilerplate has integration with `Google Analytics` to help you add analytics on your platform.
+
+**Guide in Boilerplate**
+
+- Go to `config/googleAnalytics.js` and just update the following configuration.
+
+```js
+const GOOGLE_ANALYTICS_CODE = "";
+```
+
+## Custom SEO
+
+NextJs SaaS boilerplate comes with fully supported SEO components.
+
+**Guide in Boilerplate**
+
+- Go to `components/additiona/seo.js`
+
+```js
+const defaultTitle = "BoilerCode - SaaS Boilerplate code";
+const defaultDescription = "BoilerCode - SaaS Boilerplate code";
+const defaultImageLink = "https://www.pagepe.com/pagepeHeader2.png";
+const url = "https://www.boilercode.co";
+```
+
+Here you just need to modify with your values and your application is SEO ready.
+
+## Custom Blog
+
+In NextJs SaaS boilerplate, You get an exciting feature for Custom Blogs, where you just need to put your `markdown` files into `pages/doc/` dir and your blog will be up and running.
+
+**Guide in Boilerplate**
+
+- Open `theme.config.js` to change theme for your blog
+
+```js
+export default {
+  logo: <span>BoilerCode.co Documentation</span>,
+  project: {
+    link: "https://boilercode.co",
+  },
+  // ... other theme options
+};
+```
+
+- Put your blog files in `.mdx` format into `/pages/blog/` folder.
+- Tip: You can use Notion to write your blogs, Then export them as `markdown` and save it as `.mdx` file format.
+
+## Additional Stuff
+
+In NextJs SaaS Boilerplate, You have bunch of extra things to help you ship faster.
+
+- Go to `components/elements/`, here you will find bunch of extra components
+
+```js
+button.js;
+card.js;
+customDialog.js;
+customLink.js;
+pricingCard.js;
+productHunt.js;
+sprinkle.js; //for a unique icon
+video.js; //integration videos
+```
+
+## Get NextJs SaaS Boilerplate
+
+[Get NextJs SaaS Boilerplate](https://boilercode.co)
