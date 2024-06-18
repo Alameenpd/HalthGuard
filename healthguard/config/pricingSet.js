@@ -1,14 +1,12 @@
 const pricingTiers = [
   {
-    title: "LemonSqueezy Payment",
+    title: "Basic",
     price: "$9",
     features: [
-      "Our Awesome Feature 1",
-      "Our Awesome Feature 2",
-      "Our Awesome Feature 3",
-      "Our Awesome Feature 4",
-      "Our Awesome Feature 5",
-      "Our Awesome Feature 6",
+      "Access to Injuy Dectection",
+      "Verbal Instructions",
+      "Emergency Service Contact",
+      "Limited Access to Medical Expert Team",
     ],
     paymentProvider: "LemonSqueezy",
     lemonSqueezy: {
@@ -18,15 +16,13 @@ const pricingTiers = [
     stripe: {},
   },
   {
-    title: "Stripe Payment",
+    title: "Premium",
     price: "$19",
     features: [
-      "Our Awesome Feature 1",
-      "Our Awesome Feature 2",
-      "Our Awesome Feature 3",
-      "Our Awesome Feature 4",
-      "Our Awesome Feature 5",
-      "Our Awesome Feature 6",
+      "Video Integration",
+      "Emergency Service Contact",
+      "Progress Tracking",
+      "First Aid Guidiance for Common Injuries",
     ],
     paymentProvider: "Stripe",
     lemonSqueezy: {},

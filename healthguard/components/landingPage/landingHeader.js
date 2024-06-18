@@ -36,7 +36,7 @@ export default function LandingHeader() {
                 >
                   <div aria-hidden="true" className="flex space-x-1"></div>
                   <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                    NextJs - Boilercode
+                    HealthGuard
                   </span>
                 </a>
 
@@ -83,16 +83,13 @@ export default function LandingHeader() {
                   ) : (
                     <ul className="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0">
                       <li>
-                        <CustomLink link="#" text="Link 1" />
+                        <CustomLink link="#" text="Home" />
                       </li>
                       <li>
-                        <CustomLink link="#" text="Link 2" />
+                        <CustomLink link="#" text="Features" />
                       </li>
                       <li>
-                        <CustomLink link="#" text="Link 3" />
-                      </li>
-                      <li>
-                        <CustomLink link="#" text="Link 4" />
+                        <CustomLink link="#" text="Testimonial" />
                       </li>
                     </ul>
                   )}

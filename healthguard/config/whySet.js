@@ -1,34 +1,33 @@
-import {
-  MdOutlineRssFeed,
-  MdRocketLaunch,
-  MdOutlineShield,
-} from "react-icons/md";
-import { BsGlobeAmericas } from "react-icons/bs";
+
+import { GoVideo } from "react-icons/go";
+import { FaPersonCircleCheck } from "react-icons/fa6";
+import { WiTime1 } from "react-icons/wi";
+import { FaUserFriends } from "react-icons/fa";
 
 const why = [
   {
-    Icon: MdOutlineRssFeed,
-    title: "Why 1",
+    Icon:  GoVideo,
+    title: "Confident First Aid",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      "Receive step-by-step guidance and videos to administer first aid with confidence.",
   },
   {
-    Icon: MdRocketLaunch,
-    title: "Why 2",
+    Icon: FaPersonCircleCheck,
+    title: "Accurate Injury Detection",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      " AI-powered image analysis identifies injuries and provides appropriate guidance.",
   },
   {
-    Icon: BsGlobeAmericas,
-    title: "Why 3",
+    Icon: WiTime1,
+    title: "Timely Support",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      " Quickly connect with emergency services in severe situations.",
   },
   {
-    Icon: MdOutlineShield,
-    title: "Why 4",
+    Icon: FaUserFriends,
+    title: "User-Friendly",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      " Easy-to-use interface and clear instructions make first aid accessible to everyone.",
   },
 ];
 

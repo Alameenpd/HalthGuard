@@ -1,63 +1,38 @@
-import {
-    MdOutlineRssFeed,
-    MdRocketLaunch,
-    MdOutlineShield,
-    MdPublishedWithChanges,
-    MdSpeed,
-  } from "react-icons/md";
-  import { BsGlobeAmericas } from "react-icons/bs";
-  import { TbSeo } from "react-icons/tb";
-  import { BiDollar } from "react-icons/bi";
+
+  import { 
+            BsPersonVideo
+   } from "react-icons/bs";
+   import { PiChalkboardTeacher } from "react-icons/pi";
+ 
+  import { RiPhoneCameraLine } from "react-icons/ri"
+  import { GrEmergency } from "react-icons/gr";
 
 const features = [
   {
-    Icon: MdOutlineRssFeed,
-    title: "Feature 1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+    Icon: RiPhoneCameraLine,
+    title: "Snap & Dectect: Instant injury identification",
+    description: "Use your device's camera to detect injuries and get instant feedback. HealthGuard AI's advanced image analysis technology identifies the type and severity of the injury, providing a solid foundation for effective first aid."
   },
   {
-    Icon: MdRocketLaunch,
-    title: "Feature 2",
+    Icon: BsPersonVideo,
+    title: "Visual Guidance: Step-by-Step First Aid Videos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      "Watch video tutorials that demonstrate first aid procedures, providing a clear understanding of each step. HealthGuard AI's video integration ensures you're well-equipped to handle any situation.",
   },
   {
-    Icon: BsGlobeAmericas,
-    title: "Feature 3",
+    Icon:  PiChalkboardTeacher,
+    title: "Voice Guidance: AI-Powered Verbal Instructions",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      "Receive clear, concise verbal instructions from HealthGuard AI's advanced algorithms. Get guidance on first aid procedures, ensuring you stay focused and confident in emergency situations.",
   },
+ 
   {
-    Icon: MdOutlineShield,
-    title: "Feature 4",
+    Icon: GrEmergency,
+    title: "Emergency Alert: Quick Access to Help",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      "In severe situations, HealthGuard AI enables rapid access to emergency services. With a single tap, connect with professionals who can provide critical assistance, ensuring timely support when it matters most.",
   },
-  {
-    Icon: MdPublishedWithChanges,
-    title: "Feature 5",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-  },
-  {
-    Icon: MdSpeed,
-    title: "Feature 6",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-  },
-  {
-    Icon: TbSeo,
-    title: "Feature 7",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-  },
-  {
-    Icon: BiDollar,
-    title: "Feature 8",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-  },
+
 ];
 
 export default features;
