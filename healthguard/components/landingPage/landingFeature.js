@@ -6,7 +6,7 @@ import why from "@/config/whySet";
 
 const LandingFeature = () => {
   return (
-    <div className="relative" id="features">
+    <div className="" id="features">
       <div
         aria-hidden="true"
         className="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-20"
@@ -18,13 +18,12 @@ const LandingFeature = () => {
         <div className="md:w-2/3 lg:w-1/2">
           <Sprikle />
 
-          <h2 className="my-8 text-2xl font-bold text-gray-700 dark:text-white md:text-4xl">
-            Describe your product features here
+          <h2 className="my-8 text-2xl font-bold text-primary dark:text-white md:text-4xl">
+            Features
           </h2>
           <p className="text-gray-600 dark:text-gray-300">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit, sed do eiusmod tempor
+            HealthGuard Ai is your trusted firstAid guide in emergencies. Using your device camera, our Ai technology identifies
+            injuries and provide step-by-step instructions to help you administer care with confidence. 
           </p>
         </div>
         <div className="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border text-gray-600 border-gray-100 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">

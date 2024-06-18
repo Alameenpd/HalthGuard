@@ -28,7 +28,7 @@ export default function LandingCta() {
                 Our Product is Awesome
               </h1>
               <p className="text-center text-sm sm:text-base md:text-xl text-gray-600 dark:text-gray-300">
-                Some Description about why is that
+              HealthGuard AI is an awesome product because it combines cutting-edge technology, comprehensive first aid coverage, and medical expertise to provide an unparalleled first aid experience.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6">

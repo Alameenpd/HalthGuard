@@ -12,22 +12,18 @@ const FeedDataCard = ({}) => {
   useEffect(() => {
     setIsDataLoading(true);
     const fetchContentEntries = async () => {
+      setIsDataLoading(true);
       const response = await fetch(`/api/db/document-crud`);
-      const data = await response.json();
-  
-      if (Array.isArray(data)) {
-        setAppContent(data);
-      } else {
-        console.error("The response data is not an array:", data);
-        setAppContent([]);
-      }
-  
+      const appContent = await response.json();
+
+      console.log(response);
+      setAppContent(appContent);
       setIsDataLoading(false);
     };
-  
+
     fetchContentEntries();
   }, [reload]);
-  
+
   const handleFileChange = async (event) => {
     setStatusMsg("Uploading & Processing file...");
     const file = event.target.files[0];

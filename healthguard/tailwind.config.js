@@ -15,6 +15,7 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+<<<<<<< HEAD
     },
     extend: {
       colors: {
@@ -50,6 +51,30 @@ module.exports = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+=======
+      colors: ({ colors }) => ({
+        inherit: colors.inherit,
+        current: colors.current,
+        transparent: colors.transparent,
+        //primary: "#ff7e33",
+        primary: "#10217d",
+        secondary: "#89dee2",
+        info: "#0C63E7",
+        black: colors.black,
+        white: colors.white,
+        slate: colors.slate,
+        gray: {
+          50: "#FAFAFC",
+          100: "#E9E9EC",
+          200: "#C6C8CD",
+          300: "#ACAEB6",
+          400: "#92959F",
+          500: "#777C87",
+          600: "#5D6370",
+          700: "#434959",
+          800: "#293041",
+          900: "#0f172a",
+>>>>>>> refs/remotes/origin/main
         },
       },
       borderRadius: {

@@ -3,20 +3,20 @@ import { React, useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function DashboardHero() {
-  // const { data: session, status } = useSession();
-  // const userEmail = session?.user?.email;
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { data: session, status } = useSession();
+  const userEmail = session?.user?.email;
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const words = ["Magic", "Website", "Blog"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentTyping, setCurrentTyping] = useState("");
   const [charIndex, setCharIndex] = useState(0);
 
-  // useEffect(() => {
-  //   if (status === "authenticated") {
-  //     setIsAuthenticated(true);
-  //   }
-  // }, [status]);
+  useEffect(() => {
+    if (status === "authenticated") {
+      setIsAuthenticated(true);
+    }
+  }, [status]);
 
   useEffect(() => {
     const typingInterval = setInterval(() => {
