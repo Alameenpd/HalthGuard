@@ -5,6 +5,7 @@ import DashboardHero from "@/components/dashboard/DashboardHero";
 import FeedDataCard from "@/components/aiComponent/feedDataCard";
 import Chatbot from "@/components/aiComponent/chatbot";
 import Room from "@/components/dashboard/Room";
+import DashBoard from "@/components/dashboard/DashBoard";
 
 export default function Dashboard() {
   return (
@@ -13,10 +14,7 @@ export default function Dashboard() {
         <SEO />
         <LandingHeader />
         <main className="space-y-40 mb-0">
-          <DashboardHero />
-          <Room />
-          <FeedDataCard />
-          <Chatbot />
+          <DashBoard />
         </main>
       </LandingLayout>
     </>
